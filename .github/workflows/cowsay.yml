@@ -19,16 +19,24 @@ jobs:
           cowsay_to_output: 'cowsay'
       - name: print output
         run: |
-          echo "${{ steps.cowsay_output_id.outputs.cowsay }}"    
+          echo "${{ steps.cowsay_output_id.outputs.cowsay }}" > cowsay.txt
+      
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-artifact@v4 # or specific "vX.X.X" version tag for this action
+        with:
+          path: cowsay.txt
+          name: notrevache
 
   deploy:
     runs-on: self-hosted
     needs: build
     steps:
-      - run: ls -alh
-      - name: print output
-        run: |
-          echo "${{ steps.cowsay_output_id.outputs.cowsay }}"
+      - uses: actions/download-artifact@v4
+        with:
+          path: /var/www/html/
+          name: notrevache
+
 #      - name: install and run cowsay
 #        run: |
 #          apt update
