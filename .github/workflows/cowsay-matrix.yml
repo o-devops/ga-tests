@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
+        modele:
+          - gopher
+          - cow
         vache:
           - marguerite
           - geraldine
@@ -23,7 +26,7 @@ jobs:
         uses: Code-Hex/neo-cowsay-action@v1
         with:
           message: je suis ${{ matrix.vache }}
-          cow: 'gopher' # ascii art list: https://github.com/Code-Hex/Neo-cowsay/tree/master/cows
+          cow: ${{ matrix.modele }} # ascii art list: https://github.com/Code-Hex/Neo-cowsay/tree/master/cows
           cowsay_to_output: 'cowsay'
       - name: print output
         run: |
