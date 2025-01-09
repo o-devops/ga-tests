@@ -23,8 +23,12 @@ jobs:
 
   deploy:
     runs-on: self-hosted
+    needs: build
     steps:
       - run: ls -alh
+      - name: print output
+        run: |
+          echo "${{ steps.cowsay_output_id.outputs.cowsay }}"
 #      - name: install and run cowsay
 #        run: |
 #          apt update
