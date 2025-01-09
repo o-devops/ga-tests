@@ -10,6 +10,7 @@ jobs:
   demo-matrix:
     runs-on: ubuntu-24.04
     strategy:
+      max-parallel: 2
       matrix:
         modele:
           - gopher
