@@ -21,8 +21,9 @@ jobs:
         run: |
           echo "${{ steps.cowsay_output_id.outputs.cowsay }}" > cowsay.txt
       
-      - run: |
-          grep "_,88,_" cowsay.txt
+      - name: test output
+        run: |
+          grep "_,,_" cowsay.txt
       
       - name: Upload static files as artifact
         id: deployment
