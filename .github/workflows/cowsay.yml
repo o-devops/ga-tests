@@ -24,6 +24,7 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+      - run: ls -alh
 #      - name: install and run cowsay
 #        run: |
 #          apt update
