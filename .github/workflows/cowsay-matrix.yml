@@ -13,7 +13,12 @@ jobs:
       matrix:
         modele:
           - gopher
-          - cow
+          - cower
+          - docker
+          - squirrel
+          - koala
+          - ghostbuster
+          - vader
         vache:
           - marguerite
           - geraldine
