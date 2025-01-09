@@ -26,6 +26,8 @@ jobs:
           - therese
           - josette
           - augustine
+        exclude:
+          - module: docker
     steps:
       - name: output pipeline
         id: cowsay_output_id # You want id
