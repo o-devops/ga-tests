@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    environment: PROD
     steps:
       - name: output pipeline
         id: cowsay_output_id # You want id
