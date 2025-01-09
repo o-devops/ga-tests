@@ -4,10 +4,12 @@ name: generate a cowsay
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-24.04
+    steps:
       - name: output pipeline
         id: cowsay_output_id # You want id
         uses: Code-Hex/neo-cowsay-action@v1
