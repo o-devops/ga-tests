@@ -6,14 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    runs-on: self-hosted
-    steps:
-#      - name: install and run cowsay
-#        run: |
-#          apt update
-#          apt install cowsay
-#          cowsay "Test" > /var/www/html/cowsay.txt
+  build:
+    runs-on: ubuntu-24.04
       - name: output pipeline
         id: cowsay_output_id # You want id
         uses: Code-Hex/neo-cowsay-action@v1
@@ -23,4 +17,13 @@ jobs:
           cowsay_to_output: 'cowsay'
       - name: print output
         run: |
-          echo "${{ steps.cowsay_output_id.outputs.cowsay }}"
+          echo "${{ steps.cowsay_output_id.outputs.cowsay }}"    
+
+  deploy:
+    runs-on: self-hosted
+    steps:
+#      - name: install and run cowsay
+#        run: |
+#          apt update
+#          apt install cowsay
+#          cowsay "Test" > /var/www/html/cowsay.txt
