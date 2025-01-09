@@ -1,0 +1,30 @@
+---
+
+name: show matrix
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  demo-matrix:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        vache:
+          - marguerite
+          - geraldine
+          - therese
+          - josette
+          - augustine
+    steps:
+      - name: output pipeline
+        id: cowsay_output_id # You want id
+        uses: Code-Hex/neo-cowsay-action@v1
+        with:
+          message: je suis ${{ matrix.vache }}
+          cow: 'gopher' # ascii art list: https://github.com/Code-Hex/Neo-cowsay/tree/master/cows
+          cowsay_to_output: 'cowsay'
+      - name: print output
+        run: |
+          echo "${{ steps.cowsay_output_id.outputs.cowsay }}" 
