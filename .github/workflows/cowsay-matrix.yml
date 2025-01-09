@@ -29,6 +29,8 @@ jobs:
         exclude:
           - modele: docker
           - modele: squirrel
+          - vache: marguerite
+            modele: vader
   
     steps:
       - name: output pipeline
