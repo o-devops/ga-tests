@@ -11,10 +11,16 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          docker build -t aurelienbras/mavache:1 .
-          docker login -u aurelienbras -p $DOCKERHUB_TOKEN
-          docker push aurelienbras/mavache:1
-        env:
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_AURELIEN_TOKEN }}
+      # - run: |
+      #     docker build -t aurelienbras/mavache:1 .
+      #     docker login -u aurelienbras -p $DOCKERHUB_TOKEN
+      #     docker push aurelienbras/mavache:1
+      #   env:
+      #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_AURELIEN_TOKEN }}
 
+      - 
+        name: Login to docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ vars.DOCKERHUB_PASSWORD }}
